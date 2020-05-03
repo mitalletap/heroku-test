@@ -27,7 +27,9 @@ app.get('/', (req, res) => {
     res.send({ "message" : "you're connected!"})
 });
 
+app.set(port);
 
-app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`);
-});
+
+app.listen(port, function () {
+    console.log("Server is running on port :" + port)
+})
