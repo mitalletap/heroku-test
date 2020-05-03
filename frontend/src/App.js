@@ -6,7 +6,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: '',
+      message: [],
     }
 
   }
@@ -28,7 +28,9 @@ class App extends Component {
   render() {
     const { message } = this.state;
     return (
-      <h1> {message} </h1>
+      <div className="App">
+        <h1> {`${message.message}`} </h1>
+      </div>
     )
   }
 }
