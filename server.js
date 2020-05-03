@@ -7,10 +7,6 @@ const postRoutes = require('./routes/post');
 const userRoutes = require('./routes/user');
 
 var Post = require('./models/post.model')
-const postRoutes = require('./routes/post');
-const userRoutes = require('./routes/user');
-
-var Post = require('./models/post.model')
 
 
 if(process.env.NODE_ENV !== 'production') {
