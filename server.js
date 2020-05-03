@@ -3,6 +3,14 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
+const postRoutes = require('./routes/post');
+const userRoutes = require('./routes/user');
+
+var Post = require('./models/post.model')
+const postRoutes = require('./routes/post');
+const userRoutes = require('./routes/user');
+
+var Post = require('./models/post.model')
 
 
 if(process.env.NODE_ENV !== 'production') {
@@ -25,9 +33,18 @@ db.once('open', () => {
     console.log("MongoDB database connection established successfully");
 })
 
-app.get('/message', (req, res) => {
-    res.send({ "message" : "you're connected!"})
+app.get('/', (req, res) => {
+    Post.find({}, function (err, post) {
+        if(err) {
+            res.send("Soemthing went wrong")
+            next();
+        } 
+        res.json(post);
+    });
 });
+
+app.use('/post', postRoutes);
+app.use('/user', userRoutes);
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname+'/frontend/build/index.html'));
