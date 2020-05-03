@@ -1,7 +1,7 @@
 Followed Steps from : https://daveceddia.com/deploy-react-express-app-heroku/
 
 
-###Build Backend 
+### Build Backend 
 
 1. Create Directory
 2. npm init -y OR yarn init -y
@@ -54,7 +54,7 @@ app.listen(port, function () {
 
 
 
-###Connect To Git and Heroku
+### Connect To Git and Heroku
 
 1. Initialize Git Repo in local folder
 2. Add the **node_modules** folder to the **.gitignore** file
@@ -79,7 +79,7 @@ git push heroku master
 
 
 
-###Build Frontend 
+### Build Frontend 
 
 1. Create the React App
 ```
