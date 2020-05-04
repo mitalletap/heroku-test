@@ -31,6 +31,7 @@ const aws_exports = {
 };
 Amplify.configure(aws_exports);
 
+console.log(process.env.REACT_APP_IDENTITY_POOL_ID)
 const signUpConfig = {
   hiddenDefaults: ["username"],
   defaultCountryCode: '1',
