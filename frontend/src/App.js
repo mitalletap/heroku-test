@@ -92,7 +92,6 @@ class App extends Component {
 
   render() {
     const { name, username, loaded } = this.state;
-    console.log(username)
     
     return (
       loaded === true ? 
