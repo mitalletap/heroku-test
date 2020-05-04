@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Amplify, { Auth } from 'aws-amplify';
 import { withAuthenticator } from 'aws-amplify-react';
 import aws_exports from './aws-exports';
-import '@aws-amplify/ui/dist/style.css';
 
 import NavBar from './components/layout/NavBar';
 import Home from './components/pages/home/Home';
@@ -15,8 +14,10 @@ import PublicProfile from './components/pages/profile/PublicProfile';
 
 import { BrowserRouter as Router, Switch, Route, withRouter } from 'react-router-dom';
 import { Layout, Menu, Input, Button } from 'antd';
+
 import './App.css';
 import 'antd/dist/antd.css';
+import '@aws-amplify/ui/dist/style.css';
 
 
 const { Header, Content, Footer, Sider } = Layout;
