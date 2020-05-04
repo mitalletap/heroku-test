@@ -1,0 +1,10 @@
+{
+    "auth": {
+        "socialmediaapp5c16daad": {
+            "service": "Cognito",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": [],
+            "customAuth": false
+        }
+    }
+}

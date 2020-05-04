@@ -2,21 +2,19 @@ import React, { Component } from 'react';
 import Amplify, { Auth } from 'aws-amplify';
 import { withAuthenticator } from 'aws-amplify-react';
 import aws_exports from './aws-exports';
-import { BrowserRouter as Router, Switch, Route, withRouter } from 'react-router-dom';
-import { Layout, Menu, Input } from 'antd';
-
-
-import NavBar from './components/layout/NavBar'
-import Home from './components/pages/home/Home'
-import Profile from './components/pages/profile/Profile'
-import Friends from './components/pages/friends/Friends'
-import Notifications from './components/pages/notifications/Notifications'
-import Post from './components/pages/post/Post'
-import PublicProfile from './components/pages/profile/PublicProfile'
-
-
-
 import '@aws-amplify/ui/dist/style.css';
+
+import NavBar from './components/layout/NavBar';
+import Home from './components/pages/home/Home';
+import Friends from './components/pages/friends/Friends';
+import Profile from './components/pages/profile/Profile';
+import Notifications from './components/pages/notifications/Notifications';
+import Post from './components/pages/post/Post';
+import PublicProfile from './components/pages/profile/PublicProfile';
+
+
+import { BrowserRouter as Router, Switch, Route, withRouter } from 'react-router-dom';
+import { Layout, Menu, Input, Button } from 'antd';
 import './App.css';
 import 'antd/dist/antd.css';
 
@@ -24,7 +22,6 @@ import 'antd/dist/antd.css';
 const { Header, Content, Footer, Sider } = Layout;
 
 Amplify.configure(aws_exports);
-
 
 const signUpConfig = {
   hiddenDefaults: ["username"],
@@ -52,8 +49,6 @@ const signUpConfig = {
   }]
 }
 
-
-
 class App extends Component {
 
   constructor(props) {
@@ -74,16 +69,16 @@ class App extends Component {
       .then((res) => { 
         this.setState({ 
           userSignedIn: true,
-          username: res.attributes.preferred_username,
+          username: res.username,
           name: res.attributes.name,
           email: res.attributes.email,
           birthday: res.attributes.birthdate,
-          phoneNumber: res.attributes.phone_number,
-          loaded: true
-        });
+          phoneNumber: res.attributes.phone_number
+        }, res.username !== '' ? this.setState({ loaded: true }) : this.setState({ loaded: false }));
       })
       .catch(err => console.log(err))
   }
+
 
 
   getUserData() {
@@ -96,9 +91,10 @@ class App extends Component {
 
   render() {
     const { name, username, loaded } = this.state;
+    console.log(username)
+    
     return (
-      
-      loaded ? 
+      loaded === true ? 
       <React.Fragment>
         <div className="app-container">
           <Router>
@@ -106,7 +102,8 @@ class App extends Component {
               <Sider breakpoint="lg" collapsedWidth="100" className="sider-navbar" theme={"light"} width={500}>
                   <NavBar />
               </Sider>
-              <Layout className="app-content">
+              <Layout className="a
+              pp-content">
                 <Layout>
                   <Content>
                     <Switch className="app-content-items">
@@ -133,5 +130,15 @@ class App extends Component {
 }
 
 
-// export default withAuthenticator(App, true);
 export default withAuthenticator(App, { signUpConfig });
+
+
+
+
+
+
+
+
+
+
+
