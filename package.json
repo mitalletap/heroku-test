@@ -8,7 +8,7 @@
     "npm": "6.14.4"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node server.js",
     "heroku-postbuild": "cd frontend && npm install && npm run build"
   },
@@ -23,6 +23,7 @@
     "nodemon": "^2.0.3"
   },
   "devDependencies": {
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "jest": "^25.5.4"
   }
 }
