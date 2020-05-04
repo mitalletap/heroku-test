@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Amplify, { Auth } from 'aws-amplify';
 import { withAuthenticator } from 'aws-amplify-react';
-import aws_exports from './aws-exports';
+// import aws_exports from './aws-exports';
 
 import NavBar from './components/layout/NavBar';
 import Home from './components/pages/home/Home';
@@ -21,7 +21,14 @@ import '@aws-amplify/ui/dist/style.css';
 
 
 const { Header, Content, Footer, Sider } = Layout;
-
+const aws_exports = {
+  "aws_project_region": "us-east-2",
+  "aws_cognito_identity_pool_id": process.env.REACT_APP_IDENTITY_POOL_ID,
+  "aws_cognito_region": "us-east-2",
+  "aws_user_pools_id": process.env.REACT_APP_POOL_ID,
+  "aws_user_pools_web_client_id": process.env.REACT_APP_CLIENT_ID,
+  "oauth": {}
+};
 Amplify.configure(aws_exports);
 
 const signUpConfig = {
@@ -92,7 +99,6 @@ class App extends Component {
 
   render() {
     const { name, username, loaded } = this.state;
-    
     return (
       loaded === true ? 
       <React.Fragment>
