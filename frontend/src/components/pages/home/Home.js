@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Input, Button, Modal } from 'antd';
 import { Link, BrowserRouter as Router, Route } from 'react-router-dom';
-import PublicProfile from '../profile/PublicProfile'
-import Feed from './Feed'
+import { Auth } from 'aws-amplify';
+import PublicProfile from '../profile/PublicProfile';
+import Feed from './Feed';
 
 class Home extends Component {
     constructor(props) {
@@ -17,6 +18,13 @@ class Home extends Component {
     }
 
     componentDidMount() {
+        Auth.currentAuthenticatedUser()
+        .then((res) => { 
+        this.setState({ 
+                username: res.username,
+                email: res.attributes.email,
+            });
+        })
         const object = {
             name: this.props.name,
             username: this.props.username

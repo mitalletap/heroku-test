@@ -32,7 +32,7 @@ db.once('open', () => {
 app.get('/', (req, res) => {
     Post.find({}, function (err, post) {
         if(err) {
-            res.send("Soemthing went wrong")
+            res.send("Something went wrong")
             next();
         } 
         res.json(post);
@@ -49,5 +49,5 @@ app.get('*', (req, res) => {
 
 
 app.listen(port, function () {
-    console.log("Server is running on port :" + port)
+    console.log("Server is running on port: " + port)
 })

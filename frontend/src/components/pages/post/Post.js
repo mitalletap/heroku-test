@@ -11,7 +11,7 @@ class Post extends Component {
         this.state = {
             charactersUsed: 0,
             message: "",
-            name: this.props.name,
+            email: this.props.email,
             username: this.props.username
         }
     }
@@ -21,21 +21,20 @@ class Post extends Component {
         Auth.currentAuthenticatedUser()
         .then((res) => this.setState({ 
             userSignedIn: true,
-            username: res.attributes.preferred_username,
-            name: res.attributes.name,
+            username: res.username,
             email: res.attributes.email,
-            birthday: res.attributes.birthdate,
-            phoneNumber: res.attributes.phone_number,
         }))
         .catch(err => console.log(err))
     }
 
     handlePost = (e) => {
         const { message, username } = this.state;
+        console.log(message, username)
         const object = {
             username,
             message,
         }
+        console.log(object);
         this.sendPOSTRequest(object);
     }
 

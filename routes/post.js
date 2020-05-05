@@ -17,6 +17,7 @@ router.get('/:username', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+    console.log(req.body)
     if(isValid(req.body)) {
         const newPost = new Post({
             _id: new mongoose.Types.ObjectId(),
